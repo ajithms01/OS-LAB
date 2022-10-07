@@ -7,23 +7,24 @@ void swap(int *a , int *b){
 }
 
 int main(){
-		int n,p[10],bt[10],tat[10],wt[10],i,j;
+		int n,p[10],bt[10],tat[10],wt[10],i,j,priority[10];
 		float avg_tat=0,avg_wt=0;
 		
 		printf("Enter no of processes: ");
 		scanf("%d",&n);
 		
-		printf("Enter burst time of each processes: ");
+		printf("Enter burst time and priority of each processes: ");
 		
 		for(i=0;i<n;i++){
-			scanf("%d",&bt[i]);
+			scanf("%d%d",&bt[i],&priority[i]);
 			p[i] = i;
 		}
 		for(i=0;i<n;i++){
 			for(j=0;j<n-i-1;j++){
-				if(bt[j]>bt[j+1]){
+				if(priority[j]>priority[j+1]){
 					swap(&bt[j],&bt[j+1]);
 					swap(&p[j],&p[j+1]);
+					swap(&priority[j],&priority[j+1]);
 				}
 			}
 		}
